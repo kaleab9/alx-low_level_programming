@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if the C file is provided
+if [ -z "$CFILE" ]; then
+  echo "Error: C file not provided"
+  exit 1
+fi
+
+# Check if the C file exists
+if [ ! -f "$CFILE" ]; then
+  echo "Error: C file '$CFILE' not found"
+  exit 1
+fi
+
+# Get the base name of the C file without the extension
+BASENAME=$(basename "$CFILE" ".c")
+
+# Generate the assembly code using gcc and save it to the output file
+gcc -S -masm=intel "$CFILE" -o "$BASENAME.s"
+
+# Check if the compilation was successful
+if [ $? -ne 0 ]; then
+  echo "Error: Compilation failed"
+  exit 1
+fi
+
+echo "Assembly code generated successfully in '$BASENAME.s'"

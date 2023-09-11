@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Save the C file name in the variable $CFILE
+CFILE="main.c"
+
+# Generate the assembly code
+gcc -S -Wall -Werror -Wextra -pedantic -std=gnu89 "$CFILE" -o "${CFILE%.c}.s"
