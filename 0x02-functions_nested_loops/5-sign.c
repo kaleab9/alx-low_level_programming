@@ -23,7 +23,6 @@ int print_sign(int n)
 	{
 		_putchar('-');
 		return (-1);
-	
 	}
-	return 0;  /* Add this return statement at the end of the function */
+	return	(0);  /* Add this return statement at the end of the function */
 }
